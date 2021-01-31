@@ -1,4 +1,6 @@
-
+.top-text{
+  text-decoration: none;
+}
 
 @keyframes App-logo-spin {
   from {
