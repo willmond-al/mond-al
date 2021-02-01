@@ -1,51 +1,41 @@
-import logo from './logo.svg';
-import { Route, NavLink, useHistory } from 'react-router-dom'
+import { Link, Route, NavLink, useHistory, Switch } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-
-import './App.css';
-import styled from 'styled-components'
+import Main from './components/Main'
 import About from './components/About'
 import BadIdeas from './components/BadIdeas'
 import GoodIdeas from './components/GoodIdeas'
 
+import './App.css';
+
+const ideas ={
+  badIdeas: [],
+  goodIdeas: []
+}
+
+
 
 function App() {
   return (
-<Router>
-    <StyledApp>
-      <h1>MONDiAL</h1>
-
-      <nav className="home-nav">
-        {/* <NavLink className="top-text" to={"/about"}>who this is</NavLink> */}
-        <NavLink className="top-text" to={"/badIdeas"}>bad ideas</NavLink>
-        <NavLink className="top-text" to={"/goodIdeas"}>good ideas</NavLink>
-      </nav>
+  <Router>
+   <Main/>
+   <Switch>
       <Route
       path="/about"
       render={()=><About/>}
       />
       <Route
       path="/badIdeas"
-      render={()=><BadIdeas/>}
+      render={()=><BadIdeas badIdeas={ideas.badIdeas}/>}
       />
       <Route
       path="/goodIdeas"
-      render={()=><GoodIdeas/>}
+      render={()=><GoodIdeas goodIdeas={ideas.goodIdeas}/>}
       />
-    </StyledApp>
-    </Router>
+      <Route
+      exact path="/"/>
+      </Switch>
+  </Router>
   );
 }
-
-const StyledApp = styled.div`
-
-text-align:center;
-
-.home-nav{
-  display:flex;
-  justify-content: space-evenly;
-}
-
-`
 
 export default App;

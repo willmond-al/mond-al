@@ -1,9 +1,12 @@
 import React from 'react'
 
-const BadIdeas = () =>{
+const BadIdeas = ({badIdeas}) =>{
+
+
     return(
         <div>
         <div>bad ideas</div>
+        {badIdeas}
     </div>
     )
 }
