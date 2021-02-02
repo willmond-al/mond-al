@@ -4,8 +4,10 @@ import Main from './components/Main'
 import About from './components/About'
 import BadIdeas from './components/BadIdeas'
 import GoodIdeas from './components/GoodIdeas'
+import Weather from './components/widgets/Weather'
 
 import './App.css';
+import './index.css'
 
 const ideas ={
   badIdeas: [],
@@ -32,7 +34,8 @@ function App() {
       render={()=><GoodIdeas goodIdeas={ideas.goodIdeas}/>}
       />
       <Route
-      exact path="/"/>
+      exact path="/"
+      render={()=> <Weather/>}/>
       </Switch>
   </Router>
   );

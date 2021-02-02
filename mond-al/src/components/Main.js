@@ -1,14 +1,37 @@
 import { Link, Route, NavLink, useHistory, Switch } from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Weather from './widgets/Weather'
+import image from '../assets/face.jpeg'
 
 import styled from 'styled-components'
+import { useEffect } from 'react'
 
+function myMove() {
+  var elem = document.getElementById("mover");
+  var pos = -600;
+  var id = setInterval(frame, 2);
+  console.log("hello")
+   function frame() {
+    if (pos === 700) {
+      clearInterval(id);
+    } else {
+      pos++;
+      elem.style.left = pos + 'px';
+      elem.style.right = pos + 'px';
+    }
+  }
+}
 
-function Main() {
+const Main = () => {
+
+  // useEffect(()=>{
+  //   myMove()
+  // }, [])
+  
+  
   return (
     <StyledMain>
-
+      {/* <button onClick={myMove}>click</button> */}
       <nav className="home-nav">
         {/* <NavLink className="top-text" to={"/about"}>who this is</NavLink> */}
         <NavLink className="top-text" to={"/badIdeas"}>bad ideas</NavLink>
@@ -16,8 +39,8 @@ function Main() {
       </nav>
       <div className="header">
       <Link to="/">MOND-AL</Link>
+      <img id="mover" src={image}/>
       </div>
-        <Weather/>
     </StyledMain>
   );
 }
@@ -29,6 +52,7 @@ const StyledMain = styled.div`
 text-align:center;
 font-family: 'Oswald', sans-serif;
 transition:0.7s;
+margin-bottom: 2%;
 
 .header{
 
@@ -37,8 +61,14 @@ transition:0.7s;
   transition:0.7s;
 }
 
+#mover{
+  align-items:left;
+  position: relative;
+  display: inline;
+}
+
 .header:hover{
-    
+  background: blueviolet;
 }
 
 .header a{
@@ -54,10 +84,13 @@ transition:0.7s;
   padding:2%;
   margin: 3%;
   transition:0.7s;
+  background:lightgoldenrodyellow
 }
 
-.home-nav:hover{
-    color:white
+
+
+.home-nav a:hover{
+   color: grey
 }
 
 `
