@@ -6,11 +6,12 @@ import image from '../assets/face.jpeg'
 import styled from 'styled-components'
 import { useEffect } from 'react'
 
+var mover = document.getElementById('mover')
+
 function myMove() {
   var elem = document.getElementById("mover");
   var pos = -600;
-  var id = setInterval(frame, 2);
-  console.log("hello")
+  var id = setInterval(frame, 1.8);
    function frame() {
     if (pos === 700) {
       clearInterval(id);
@@ -22,11 +23,17 @@ function myMove() {
   }
 }
 
+
 const Main = () => {
 
-  // useEffect(()=>{
-  //   myMove()
-  // }, [])
+
+
+  useEffect(()=>{
+    setInterval(() => {
+      myMove()
+    },5150);
+
+  }, )
   
   
   return (
@@ -38,12 +45,33 @@ const Main = () => {
         <NavLink className="top-text" to={"/goodIdeas"}>good ideas</NavLink>
       </nav>
       <div className="header">
+        <div className="title">
       <Link to="/">MOND-AL</Link>
-      <img id="mover" src={image}/>
+        </div>
+        <div id="mover">
+          <a href="https://twitter.com/wbmondal" target="_blank">
+        <span className="twitter">twitter</span>
+          </a>
+      <img className="img" src={image}/>
+          <a href="https://twitter.com/wbmondal" target="_blank">
+        <span className="mv">multiverse</span>
+          </a>
+        </div>
       </div>
     </StyledMain>
   );
 }
+
+// document.addEventListener('keydown', function(e) {
+//   if (e.which === 37) {
+//     var leftNumbers = mover.style.left.replace('px', '')
+//     var left = parseInt(leftNumbers, 10)
+
+//     mover.style.left = `${left - 1}px`
+//   }
+// })
+
+// mover.style.bottom = '100px'
 
 const StyledMain = styled.div`
 
@@ -52,23 +80,38 @@ const StyledMain = styled.div`
 text-align:center;
 font-family: 'Oswald', sans-serif;
 transition:0.7s;
-margin-bottom: 2%;
+margin-bottom: 0.5%;
 
 .header{
 
-  padding: 8%;
-  background: white;
+  padding: 5%;
   transition:0.7s;
+  margin-bottom: 1%;
 }
 
 #mover{
-  align-items:left;
+
   position: relative;
-  display: inline;
+  /* display: flex; */
+/* justify-content:center; */
+  /* box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3) */
+}
+
+.mv{
+  color:purple;
+}
+
+.twitter{
+  color:lightskyblue
+}
+
+.img{
+  width: 23%;
+  border-radius: 90px;
 }
 
 .header:hover{
-  background: blueviolet;
+
 }
 
 .header a{
@@ -82,15 +125,21 @@ margin-bottom: 2%;
   display:flex;
   justify-content: space-evenly;
   padding:2%;
-  margin: 3%;
+  margin: 1%;
   transition:0.7s;
   background:lightgoldenrodyellow
 }
 
-
-
 .home-nav a:hover{
    color: grey
+}
+
+.title{
+  margin-bottom:3%;
+}
+
+.title a{
+  font-size:5rem;
 }
 
 `

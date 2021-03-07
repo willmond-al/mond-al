@@ -74,8 +74,8 @@ const changeHandler = e => {
 
     return(
       <StyledWeather>
-    you can enter any place you want to know the current weather in :) <br/>
-    write in this format: Cityname, country e.g. (Seattle, usa) <br/>
+    you can enter any city you want to know the current weather in :) <br/>
+    if it's an obscure place you'll wanna add the country e.g. "Medira, mexico" <br/>
     <form onSubmit={submitHandler}>
       <input
       type="text"
