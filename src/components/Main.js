@@ -142,6 +142,13 @@ margin-bottom: 0.5%;
   font-size:5rem;
 }
 
+@media (max-width: 500px){
+  .twitter{
+    color: green
+  }
+}
+
 `
+
 
 export default Main;
